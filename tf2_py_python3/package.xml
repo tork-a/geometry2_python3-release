@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
-  <name>tf2_py</name>
-  <version>0.7.5</version>
+  <name>tf2_py_python3</name>
+  <version>0.6.8</version>
   <description>The tf2_py package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
@@ -38,11 +38,12 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>python3-catkin-pkg-modules</buildtool_depend>
   <build_depend>tf2</build_depend>
   <build_depend>rospy</build_depend>
   <run_depend>tf2</run_depend>
   <run_depend>rospy</run_depend>
-
+  <run_depend>python3-rospkg-modules</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

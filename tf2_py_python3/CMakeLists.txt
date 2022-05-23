@@ -1,5 +1,9 @@
-cmake_minimum_required(VERSION 3.0.2)
-project(tf2_py)
+cmake_minimum_required(VERSION 2.8.3)
+project(tf2_py_python3)
+
+set(Python_ADDITIONAL_VERSIONS 3.6;3.7;3.8) ## https://stackoverflow.com/questions/29245558/how-to-link-with-python3-libs-with-cmake
+find_package(PythonInterp 3 REQUIRED) ## tf_python3 :: use Python3 by default
+find_package(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}")
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -10,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS rospy tf2)
 # find_package(Boost REQUIRED COMPONENTS system)
 
 
-find_package(PythonLibs 2 REQUIRED)
+find_package(PythonLibs 3 REQUIRED)
 include_directories(${PYTHON_INCLUDE_PATH} ${catkin_INCLUDE_DIRS})
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -101,11 +105,6 @@ else()
   set_target_properties(tf2_py PROPERTIES COMPILE_FLAGS "-g -Wno-missing-field-initializers")
   set_target_properties(tf2_py PROPERTIES OUTPUT_NAME tf2 PREFIX "_" SUFFIX ".so")
 endif()
-set_target_properties(tf2_py PROPERTIES
-  ARCHIVE_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
-  LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
-  RUNTIME_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
-)
 #!! rosbuild_add_compile_flags(tf2_py ${SSE_FLAGS}) #conditionally adds sse flags if available
 
 
@@ -144,8 +143,19 @@ set_target_properties(tf2_py PROPERTIES
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+## tf_pytyhon3 :: re-set PROJECT_NAME to tf
+set(PROJECT_NAME tf2_py)
+## tf_pytyhon3 :: re-set CATKIN_PACKAGE_PYTHON_DESTINATION with PROJECT_NAME as tf
+set(CATKIN_PACKAGE_PYTHON_DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/${PROJECT_NAME})
+
+set_target_properties(tf2_py PROPERTIES
+  ARCHIVE_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
+  LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
+  RUNTIME_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
+)
+
 install(FILES $<TARGET_FILE:tf2_py>
-    DESTINATION ${CATKIN_PACKAGE_PYTHON_DESTINATION}
+  DESTINATION ${CATKIN_PACKAGE_PYTHON_DESTINATION}
 )
 
 #############
