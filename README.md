@@ -1,3 +1,42 @@
+## geomerty2_python3 (melodic) - 0.6.9-2
+
+The packages in the `geomerty2_python3` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --track melodic --rosdistro melodic geomerty2_python3` on `Mon, 20 Jun 2022 07:51:49 -0000`
+
+The `jsk_tf2_py_python3` package was released.
+
+These packages were explicitly ignored:
+- `geometry_experimental`
+- `test_tf2`
+- `geometry2`
+- `tf2`
+- `tf2_bullet`
+- `tf2_eigen`
+- `tf2_geometry_msgs`
+- `tf2_kdl`
+- `tf2_msgs`
+- `tf2_py`
+- `tf2_ros`
+- `tf2_sensor_msgs`
+- `tf2_tools`
+- `tf2_py_python3`
+
+Version of package(s) in repository `geomerty2_python3`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/geometry2_python3.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `0.6.9-1`
+- new version: `0.6.9-2`
+
+Versions of tools used:
+
+- bloom version: `0.11.1`
+- catkin_pkg version: `0.5.0`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## geomerty2_python3 (noetic) - 0.6.9-1
 
 The packages in the `geomerty2_python3` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --track melodic --rosdistro noetic geomerty2_python3` on `Mon, 20 Jun 2022 07:38:02 -0000`
