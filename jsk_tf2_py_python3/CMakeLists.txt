@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(tf2_py_python3)
+project(jsk_tf2_py_python3)
 
 set(Python_ADDITIONAL_VERSIONS 3.6;3.7;3.8) ## https://stackoverflow.com/questions/29245558/how-to-link-with-python3-libs-with-cmake
 find_package(PythonInterp 3 REQUIRED) ## tf_python3 :: use Python3 by default
@@ -94,16 +94,16 @@ catkin_package(
 # so build with the objects directly instead.
 
 link_libraries(${PYTHON_LIBRARIES})
-add_library(tf2_py src/tf2_py.cpp)
-target_link_libraries(tf2_py ${catkin_LIBRARIES})
-add_dependencies(tf2_py ${catkin_EXPORTED_TARGETS})
+add_library(${PROJECT_NAME} src/tf2_py.cpp)
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
+add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 
 if(WIN32)
   # use .pyd extension on Windows
-  set_target_properties(tf2_py PROPERTIES OUTPUT_NAME "_tf2" SUFFIX ".pyd")
+  set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "_tf2" SUFFIX ".pyd")
 else()
-  set_target_properties(tf2_py PROPERTIES COMPILE_FLAGS "-g -Wno-missing-field-initializers")
-  set_target_properties(tf2_py PROPERTIES OUTPUT_NAME tf2 PREFIX "_" SUFFIX ".so")
+  set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-g -Wno-missing-field-initializers")
+  set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME tf2 PREFIX "_" SUFFIX ".so")
 endif()
 #!! rosbuild_add_compile_flags(tf2_py ${SSE_FLAGS}) #conditionally adds sse flags if available
 
@@ -148,13 +148,13 @@ set(PROJECT_NAME tf2_py)
 ## tf_pytyhon3 :: re-set CATKIN_PACKAGE_PYTHON_DESTINATION with PROJECT_NAME as tf
 set(CATKIN_PACKAGE_PYTHON_DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/${PROJECT_NAME})
 
-set_target_properties(tf2_py PROPERTIES
+set_target_properties(jsk_tf2_py_python3 PROPERTIES
   ARCHIVE_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
   LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
   RUNTIME_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
 )
 
-install(FILES $<TARGET_FILE:tf2_py>
+install(FILES $<TARGET_FILE:jsk_tf2_py_python3>
   DESTINATION ${CATKIN_PACKAGE_PYTHON_DESTINATION}
 )
 

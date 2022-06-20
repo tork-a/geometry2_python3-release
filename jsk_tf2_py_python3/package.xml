@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package>
-  <name>tf2_py_python3</name>
-  <version>0.6.8</version>
-  <description>The tf2_py package</description>
+  <name>jsk_tf2_py_python3</name>
+  <version>0.6.9</version>
+  <description>The tf2_py package for python3 compatibility in melodic environment. Supported by ROS community.</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
-  <maintainer email="tfoote@osrfoundation.org">Tully Foote</maintainer>
-
+  <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
+  <maintainer email="yanokura@jsk.imi.i.u-tokyo.ac.jp">Iori Yanokura</maintainer>
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
@@ -17,7 +17,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <url type="website">http://ros.org/wiki/tf2_py</url>
+  <url type="website">https://github.com/jsk-ros-pkg/geometry2_python3</url>
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
